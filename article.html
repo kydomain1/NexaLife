@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - NexaLife</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Immediate hide to prevent flash */
+        .js-loading { opacity: 0 !important; }
+    </style>
+    <style>
+        .article-header {
+            margin-top: 80px;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .article-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .article-excerpt {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        
+        .article-body h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+        
+        .article-body h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--white);
+            color: var(--text-dark);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .share-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .related-articles {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .related-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .related-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        .related-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .related-content h3 a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .related-content h3 a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .related-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Hide content until JavaScript loads */
+        .js-loading {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .js-loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html">NexaLife</a></h1>
+                    <span class="tagline">Lifestyle Magazine</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                            <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                            <li><a href="category.html?cat=home">Home & Garden</a></li>
+                            <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                            <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                            <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta js-loading" id="articleMeta">
+                <div class="article-category" id="articleCategory">Loading...</div>
+                <div class="article-date" id="articleDate">Loading...</div>
+            </div>
+            <h1 class="article-title js-loading" id="articleTitle">Loading article...</h1>
+            <p class="article-excerpt js-loading" id="articleExcerpt">Please wait while we load the article content.</p>
+            <div class="article-author js-loading" id="articleAuthor">
+                <span>Loading...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="article-body js-loading" id="articleBody">
+            <!-- Article content will be loaded dynamically -->
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener" class="share-btn">
+                <i class="fab fa-facebook"></i> Share on Facebook
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=" target="_blank" rel="noopener" class="share-btn">
+                <i class="fab fa-twitter"></i> Share on Twitter
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=" target="_blank" rel="noopener" class="share-btn">
+                <i class="fab fa-pinterest"></i> Pin it
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=" target="_blank" rel="noopener" class="share-btn">
+                <i class="fab fa-linkedin"></i> Share on LinkedIn
+            </a>
+        </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <div class="container">
+            <h2 class="section-title">Related Articles</h2>
+            <div class="related-grid">
+                <article class="related-card">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion Trends">
+                    <div class="related-content">
+                        <h3><a href="article.html?id=1">The Future of Sustainable Fashion: Eco-Friendly Brands Leading the Way</a></h3>
+                        <div class="related-meta">By Emma Rodriguez • February 20, 2025</div>
+                    </div>
+                </article>
+
+                <article class="related-card">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ethical Fashion">
+                    <div class="related-content">
+                        <h3><a href="article.html?id=2">10 Morning Routines That Transform Your Day</a></h3>
+                        <div class="related-meta">By Michael Chen • January 28, 2025</div>
+                    </div>
+                </article>
+
+                <article class="related-card">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Fashion Industry">
+                    <div class="related-content">
+                        <h3><a href="article.html?id=3">Minimalist Home Design: Creating Serenity in Small Spaces</a></h3>
+                        <div class="related-meta">By Sarah Johnson • March 5, 2025</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <h3>NexaLife</h3>
+                        <span class="tagline">Lifestyle Magazine</span>
+                    </div>
+                    <p>Your ultimate destination for lifestyle inspiration, covering fashion, health, home, travel, finance, and culinary experiences.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pinterest.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://youtube.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                        <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                        <li><a href="category.html?cat=home">Home & Garden</a></li>
+                        <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                        <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                        <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                        <li><a href="contact.html#terms">Terms of Service</a></li>
+                        <li><a href="contact.html#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> contact@nexalife.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (212) 555-0123</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 456 Madison Avenue, New York, NY 10022</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexaLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Article data
+        const articles = {
+            1: {
+                category: "Fashion & Accessories",
+                date: "March 15, 2025",
+                title: "The Future of Sustainable Fashion: Eco-Friendly Brands Leading the Way",
+                excerpt: "Discover how innovative fashion brands are revolutionizing the industry with sustainable practices, from organic materials to zero-waste production methods.",
+                author: "Sarah Johnson",
+                readTime: "5 min read",
+                content: `
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Sustainable Fashion">
+                    
+                    <p>The fashion industry is undergoing a remarkable transformation as consumers become increasingly aware of the environmental impact of their clothing choices. Sustainable fashion is no longer a niche trend but a fundamental shift toward responsible consumption and production practices.</p>
+
+                    <h2>The Rise of Conscious Consumerism</h2>
+                    
+                    <p>Today's consumers are more informed than ever about the environmental and social costs of fast fashion. They're demanding transparency, ethical production, and environmentally friendly materials from their favorite brands. This shift in consumer behavior has created a massive opportunity for sustainable fashion brands to thrive.</p>
+
+                    <blockquote>
+                        "Sustainability is not just about the environment; it's about creating a fashion industry that respects both people and planet while delivering beautiful, high-quality products."
+                    </blockquote>
+
+                    <h2>Leading Sustainable Fashion Brands</h2>
+
+                    <h3>1. Patagonia: The Outdoor Pioneer</h3>
+                    <p>Patagonia has long been a leader in sustainable fashion, using recycled materials and fair trade practices. Their commitment to environmental activism and transparent supply chains sets the standard for the industry.</p>
+
+                    <img src="images/巴塔哥尼亚.png" alt="Patagonia Sustainable Materials">
+
+                    <h3>2. Stella McCartney: Luxury Meets Sustainability</h3>
+                    <p>Stella McCartney proves that luxury and sustainability can coexist. The brand uses innovative materials like mushroom leather and recycled polyester while maintaining high-end fashion standards.</p>
+
+                    <h3>3. Everlane: Radical Transparency</h3>
+                    <p>Everlane's "Radical Transparency" approach shows customers exactly how much it costs to make each item, from materials to labor to transportation. This transparency builds trust and educates consumers about true costs.</p>
+
+                    <h2>Innovative Sustainable Materials</h2>
+
+                    <p>The future of sustainable fashion lies in innovative materials that reduce environmental impact without compromising on style or quality:</p>
+
+                    <ul>
+                        <li><strong>Organic Cotton:</strong> Grown without harmful pesticides and chemicals</li>
+                        <li><strong>Hemp:</strong> Requires minimal water and grows quickly</li>
+                        <li><strong>Bamboo:</strong> Naturally antibacterial and moisture-wicking</li>
+                        <li><strong>Recycled Polyester:</strong> Made from plastic bottles and other waste</li>
+                        <li><strong>Mushroom Leather:</strong> A cruelty-free alternative to animal leather</li>
+                        <li><strong>Seaweed Fiber:</strong> Biodegradable and nutrient-rich</li>
+                    </ul>
+
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Eco-Friendly Production">
+
+                    <h2>Zero-Waste Production Methods</h2>
+
+                    <p>Leading sustainable brands are implementing zero-waste production methods that minimize fabric waste and maximize resource efficiency. These include:</p>
+
+                    <ol>
+                        <li>Pattern optimization to reduce fabric waste</li>
+                        <li>Upcycling of production scraps into new products</li>
+                        <li>Circular design principles that consider end-of-life disposal</li>
+                        <li>Local production to reduce transportation emissions</li>
+                    </ol>
+
+                    <h2>The Future of Sustainable Fashion</h2>
+
+                    <p>As technology advances and consumer awareness grows, we can expect to see even more innovation in sustainable fashion. From lab-grown materials to AI-powered supply chain optimization, the industry is poised for a complete transformation.</p>
+
+                    <p>The brands leading this change understand that sustainability isn't just about the environment—it's about creating a fashion industry that can thrive for generations to come while respecting both people and planet.</p>
+                `
+            },
+            2: {
+                category: "Health & Beauty",
+                date: "February 28, 2025",
+                title: "10 Morning Routines That Transform Your Day",
+                excerpt: "Start your day right with these scientifically-backed morning rituals that boost energy, focus, and overall well-being.",
+                author: "Dr. Michael Chen",
+                readTime: "6 min read",
+                content: `
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Morning Routine">
+                    
+                    <p>Your morning routine sets the tone for your entire day. Research shows that people who follow consistent morning rituals experience higher energy levels, better focus, and improved overall well-being. Here are 10 scientifically-backed morning routines that can transform your day.</p>
+
+                    <h2>1. Wake Up at the Same Time Every Day</h2>
+                    
+                    <p>Consistency is key when it comes to your sleep schedule. Going to bed and waking up at the same time every day helps regulate your circadian rhythm, leading to better sleep quality and more natural energy throughout the day.</p>
+
+                    <blockquote>
+                        "The best morning routine starts the night before with a consistent sleep schedule."
+                    </blockquote>
+
+                    <h2>2. Hydrate First Thing</h2>
+                    
+                    <p>After 7-8 hours of sleep, your body is naturally dehydrated. Drinking a glass of water first thing in the morning kickstarts your metabolism, flushes out toxins, and helps your brain function optimally.</p>
+
+                    <h2>3. Practice Gratitude</h2>
+                    
+                    <p>Taking just 2-3 minutes to write down three things you're grateful for can significantly improve your mood and outlook. Studies show that gratitude practice increases happiness and reduces stress levels.</p>
+
+                    <img src="images/书写.png" alt="Writing Gratitude">
+
+                    <h2>4. Morning Meditation or Mindfulness</h2>
+                    
+                    <p>Even just 5-10 minutes of meditation can reduce anxiety, improve focus, and set a calm tone for your day. If meditation isn't your thing, try mindful breathing or a short walk in nature.</p>
+
+                    <h2>5. Move Your Body</h2>
+                    
+                    <p>Whether it's yoga, stretching, or a quick workout, morning movement increases blood flow, releases endorphins, and gives you an energy boost that lasts throughout the day.</p>
+
+                    <h2>6. Eat a Nutritious Breakfast</h2>
+                    
+                    <p>Fuel your body with a balanced breakfast that includes protein, healthy fats, and complex carbohydrates. This provides sustained energy and prevents mid-morning crashes.</p>
+
+                    <h2>7. Plan Your Day</h2>
+                    
+                    <p>Take 5 minutes to review your schedule and prioritize your most important tasks. This helps you approach your day with intention and reduces decision fatigue.</p>
+
+                    <h2>8. Avoid Screens for the First Hour</h2>
+                    
+                    <p>Resist the urge to check your phone immediately upon waking. This allows your brain to wake up naturally and prevents the stress response that comes with digital stimulation.</p>
+
+                    <h2>9. Get Natural Light</h2>
+                    
+                    <p>Exposure to natural light within the first hour of waking helps regulate your circadian rhythm and improves sleep quality. Even on cloudy days, natural light is beneficial.</p>
+
+                    <h2>10. Set Daily Intentions</h2>
+                    
+                    <p>Before diving into your day, take a moment to set a positive intention. This could be a word, phrase, or goal that guides your actions and mindset throughout the day.</p>
+
+                    <h2>Creating Your Perfect Morning Routine</h2>
+                    
+                    <p>Remember, the best morning routine is one you can stick to consistently. Start with 2-3 of these practices and gradually add more as they become habits. Even small changes can have a profound impact on your daily well-being and productivity.</p>
+                `
+            },
+            3: {
+                category: "Home & Garden",
+                date: "April 2, 2025",
+                title: "Minimalist Home Design: Creating Serenity in Small Spaces",
+                excerpt: "Learn how to maximize your living space with minimalist design principles that create calm, organized, and beautiful homes.",
+                author: "Emma Rodriguez",
+                readTime: "7 min read",
+                content: `
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Minimalist Home Interior">
+                    
+                    <p>Minimalist design isn't just about having fewer things—it's about creating spaces that promote peace, clarity, and intentional living. In today's fast-paced world, minimalist homes offer a sanctuary from the chaos, especially in smaller living spaces where every square foot matters.</p>
+
+                    <h2>The Philosophy of Minimalism</h2>
+                    
+                    <p>Minimalism is rooted in the principle that less is more. It's about removing the unnecessary to make room for what truly matters. This design philosophy creates spaces that are not only beautiful but also functional and calming.</p>
+
+                    <blockquote>
+                        "Minimalism is not about having less. It's about making room for more of what matters."
+                    </blockquote>
+
+                    <h2>Color Palette: The Foundation of Serenity</h2>
+                    
+                    <p>A minimalist color palette typically features neutral tones—whites, grays, and beiges—with occasional accent colors. This creates a sense of calm and allows the mind to rest without visual distractions.</p>
+
+                    <h3>Recommended Color Schemes:</h3>
+                    <ul>
+                        <li><strong>Pure White:</strong> Creates a sense of space and cleanliness</li>
+                        <li><strong>Soft Grays:</strong> Adds depth without overwhelming</li>
+                        <li><strong>Natural Wood Tones:</strong> Brings warmth and texture</li>
+                        <li><strong>Muted Accents:</strong> Sage green, dusty blue, or warm terracotta</li>
+                    </ul>
+
+                    <img src="images/室内.png" alt="Minimalist Interior Design">
+
+                    <h2>Furniture Selection: Quality Over Quantity</h2>
+                    
+                    <p>In minimalist design, every piece of furniture should serve a purpose and bring joy. Choose pieces that are both functional and beautiful, with clean lines and quality materials.</p>
+
+                    <h3>Key Principles:</h3>
+                    <ul>
+                        <li>Invest in fewer, higher-quality pieces</li>
+                        <li>Choose furniture with clean, simple lines</li>
+                        <li>Opt for multi-functional pieces when possible</li>
+                        <li>Leave plenty of negative space around furniture</li>
+                    </ul>
+
+                    <h2>Storage Solutions: Hidden Organization</h2>
+                    
+                    <p>Effective storage is crucial in minimalist homes. The goal is to keep surfaces clear and items organized but out of sight. Built-in storage, hidden compartments, and vertical storage solutions are essential.</p>
+
+                    <h3>Storage Strategies:</h3>
+                    <ul>
+                        <li><strong>Built-in Shelving:</strong> Maximizes space and creates clean lines</li>
+                        <li><strong>Hidden Storage:</strong> Ottomans with storage, beds with drawers</li>
+                        <li><strong>Vertical Storage:</strong> Floor-to-ceiling shelving units</li>
+                        <li><strong>Decluttering:</strong> Regular purging of unnecessary items</li>
+                    </ul>
+
+                    <h2>Lighting: Natural and Artificial Harmony</h2>
+                    
+                    <p>Lighting plays a crucial role in minimalist design. Natural light should be maximized, while artificial lighting should be simple and functional. Avoid overly decorative fixtures that add visual clutter.</p>
+
+                    <h2>Textures and Materials: Adding Interest</h2>
+                    
+                    <p>While minimalist design emphasizes simplicity, texture adds visual interest and warmth. Natural materials like wood, stone, and linen create depth without complexity.</p>
+
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Minimalist Bedroom with Natural Materials">
+
+                    <h2>Small Space Optimization</h2>
+                    
+                    <p>For small spaces, minimalist design is particularly effective. Here are specific strategies for maximizing small living areas:</p>
+
+                    <h3>Space-Saving Tips:</h3>
+                    <ul>
+                        <li>Use mirrors to create the illusion of more space</li>
+                        <li>Choose furniture that can serve multiple purposes</li>
+                        <li>Keep the floor as clear as possible</li>
+                        <li>Use light colors to make spaces feel larger</li>
+                        <li>Invest in good lighting to brighten dark corners</li>
+                    </ul>
+
+                    <h2>Creating Your Minimalist Sanctuary</h2>
+                    
+                    <p>Remember, minimalist design is a journey, not a destination. Start by decluttering one room at a time, focusing on what truly adds value to your life. The result will be a home that feels spacious, peaceful, and perfectly suited to your lifestyle.</p>
+                `
+            },
+            4: {
+                category: "Travel & Accommodation",
+                date: "May 10, 2025",
+                title: "Hidden Gems of Southeast Asia: 5 Underrated Destinations",
+                excerpt: "Discover breathtaking destinations off the beaten path in Southeast Asia that offer authentic experiences without the crowds.",
+                author: "James Wilson",
+                readTime: "8 min read",
+                content: `
+                    <img src="images/东南亚.png" alt="Southeast Asia Hidden Gems">
+                    
+                    <p>Southeast Asia is a treasure trove of incredible destinations, but while everyone flocks to Bangkok, Bali, and Singapore, there are countless hidden gems waiting to be discovered. These underrated destinations offer authentic experiences, stunning landscapes, and rich cultures without the tourist crowds.</p>
+
+                    <h2>1. Luang Prabang, Laos</h2>
+                    
+                    <p>Nestled between the Mekong and Nam Khan rivers, Luang Prabang is a UNESCO World Heritage city that feels like stepping back in time. This former royal capital is known for its well-preserved architecture, Buddhist temples, and traditional way of life.</p>
+
+                    <blockquote>
+                        "Luang Prabang is where time stands still, and every sunrise brings a new sense of wonder."
+                    </blockquote>
+
+                    <h3>Must-Do Experiences:</h3>
+                    <ul>
+                        <li>Witness the morning alms ceremony at dawn</li>
+                        <li>Explore the stunning Kuang Si Falls</li>
+                        <li>Visit the Royal Palace Museum</li>
+                        <li>Take a boat trip on the Mekong River</li>
+                        <li>Shop at the vibrant night market</li>
+                    </ul>
+
+                    <img src="images/老挝.png" alt="Luang Prabang, Laos">
+
+                    <h2>2. El Nido, Philippines</h2>
+                    
+                    <p>While Boracay gets all the attention, El Nido in Palawan offers some of the most spectacular island scenery in the Philippines. This paradise is famous for its limestone cliffs, crystal-clear lagoons, and pristine beaches.</p>
+
+                    <h3>Adventure Awaits:</h3>
+                    <ul>
+                        <li>Island hopping to hidden lagoons</li>
+                        <li>Snorkeling in Big Lagoon and Small Lagoon</li>
+                        <li>Kayaking through secret beaches</li>
+                        <li>Climbing Taraw Cliff for panoramic views</li>
+                        <li>Diving in the pristine waters</li>
+                    </ul>
+
+                    <h2>3. Hoi An, Vietnam</h2>
+                    
+                    <p>This charming ancient town is a living museum of Vietnamese culture and architecture. Hoi An's lantern-lit streets, traditional houses, and rich culinary scene make it one of Vietnam's most enchanting destinations.</p>
+
+                    <h3>Cultural Highlights:</h3>
+                    <ul>
+                        <li>Walk through the Ancient Town at night</li>
+                        <li>Take a cooking class with local families</li>
+                        <li>Visit the Japanese Covered Bridge</li>
+                        <li>Get custom-made clothing from local tailors</li>
+                        <li>Explore the nearby My Son ruins</li>
+                    </ul>
+
+                    <h2>4. Bagan, Myanmar</h2>
+                    
+                    <p>Once the capital of the Pagan Kingdom, Bagan is home to over 2,000 ancient temples and pagodas scattered across a vast plain. This archaeological wonder offers some of the most spectacular sunrises and sunsets in Southeast Asia.</p>
+
+                    <img src="images/缅甸.png" alt="Bagan, Myanmar">
+
+                    <h3>Temple Exploration:</h3>
+                    <ul>
+                        <li>Hot air balloon ride at sunrise</li>
+                        <li>Bicycle tour of the temple complex</li>
+                        <li>Climb to the top of Shwesandaw Pagoda</li>
+                        <li>Visit the Ananda Temple</li>
+                        <li>Explore local villages and markets</li>
+                    </ul>
+
+                    <h2>5. Koh Rong Sanloem, Cambodia</h2>
+                    
+                    <p>While most travelers head to the party island of Koh Rong, Koh Rong Sanloem offers a peaceful alternative with pristine beaches, bioluminescent plankton, and a laid-back atmosphere perfect for relaxation.</p>
+
+                    <h3>Island Paradise Activities:</h3>
+                    <ul>
+                        <li>Swim with bioluminescent plankton at night</li>
+                        <li>Relax on Saracen Bay's white sand beaches</li>
+                        <li>Snorkel in the crystal-clear waters</li>
+                        <li>Hike to the lighthouse for sunset views</li>
+                        <li>Enjoy fresh seafood at beachfront restaurants</li>
+                    </ul>
+
+                    <h2>Travel Tips for Hidden Gems</h2>
+                    
+                    <p>When visiting these underrated destinations, keep these tips in mind:</p>
+
+                    <ul>
+                        <li><strong>Respect Local Culture:</strong> Learn about local customs and traditions</li>
+                        <li><strong>Pack Light:</strong> Many of these destinations have limited infrastructure</li>
+                        <li><strong>Be Flexible:</strong> Transportation and accommodations may be basic</li>
+                        <li><strong>Support Local:</strong> Choose local guides and accommodations</li>
+                        <li><strong>Travel Responsibly:</strong> Minimize your environmental impact</li>
+                    </ul>
+
+                    <h2>Planning Your Adventure</h2>
+                    
+                    <p>These hidden gems offer authentic experiences that are becoming increasingly rare in our connected world. Whether you're seeking adventure, culture, or simply a peaceful escape, Southeast Asia's underrated destinations promise unforgettable memories and genuine connections with local communities.</p>
+                `
+            },
+            5: {
+                category: "Food & Beverage",
+                date: "June 18, 2025",
+                title: "Mediterranean Diet: 10 Delicious Recipes for Healthy Living",
+                excerpt: "Explore the health benefits of the Mediterranean diet with these easy-to-make, nutritious recipes that taste amazing.",
+                author: "Chef Maria Santos",
+                readTime: "9 min read",
+                content: `
+                    <img src="images/地中海.png" alt="Mediterranean Diet">
+                    
+                    <p>The Mediterranean diet is consistently ranked as one of the healthiest eating patterns in the world. Rich in fruits, vegetables, whole grains, legumes, nuts, and olive oil, this way of eating has been linked to reduced risk of heart disease, improved brain health, and increased longevity.</p>
+
+                    <h2>The Science Behind the Mediterranean Diet</h2>
+                    
+                    <p>Research shows that people who follow the Mediterranean diet have lower rates of chronic diseases, better cognitive function, and longer life expectancy. The key is not just what you eat, but how you eat—mindfully, socially, and with pleasure.</p>
+
+                    <blockquote>
+                        "The Mediterranean diet is not just about food; it's about a lifestyle that celebrates fresh ingredients, shared meals, and the joy of cooking."
+                    </blockquote>
+
+                    <h2>Recipe 1: Classic Greek Salad</h2>
+                    
+                    <p>This refreshing salad is a perfect introduction to Mediterranean flavors. Fresh vegetables, olives, and feta cheese create a symphony of tastes and textures.</p>
+
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        <li>2 large tomatoes, diced</li>
+                        <li>1 cucumber, sliced</li>
+                        <li>1 red onion, thinly sliced</li>
+                        <li>1/2 cup Kalamata olives</li>
+                        <li>4 oz feta cheese, cubed</li>
+                        <li>3 tbsp extra virgin olive oil</li>
+                        <li>2 tbsp red wine vinegar</li>
+                        <li>1 tsp dried oregano</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+
+                    <h3>Instructions:</h3>
+                    <p>Combine all vegetables in a large bowl. Whisk together olive oil, vinegar, oregano, salt, and pepper. Pour dressing over salad and toss gently. Top with feta cheese and serve immediately.</p>
+
+                    <img src="images/沙拉.png" alt="Greek Salad">
+
+                    <h2>Recipe 2: Lemon Herb Grilled Fish</h2>
+                    
+                    <p>Fish is a cornerstone of the Mediterranean diet, providing lean protein and omega-3 fatty acids. This simple preparation lets the natural flavors shine.</p>
+
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        <li>4 fish fillets (salmon, cod, or sea bass)</li>
+                        <li>3 tbsp extra virgin olive oil</li>
+                        <li>2 lemons, juiced and zested</li>
+                        <li>3 cloves garlic, minced</li>
+                        <li>2 tbsp fresh herbs (dill, parsley, or thyme)</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+
+                    <h3>Instructions:</h3>
+                    <p>Preheat grill to medium-high. Mix olive oil, lemon juice, zest, garlic, herbs, salt, and pepper. Brush fish with marinade and grill 4-5 minutes per side until fish flakes easily.</p>
+
+                    <h2>Recipe 3: Roasted Vegetable Ratatouille</h2>
+                    
+                    <p>This French classic showcases the best of Mediterranean vegetables in a hearty, flavorful dish that's perfect as a side or main course.</p>
+
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        <li>2 eggplants, diced</li>
+                        <li>2 zucchinis, sliced</li>
+                        <li>2 bell peppers, diced</li>
+                        <li>4 tomatoes, diced</li>
+                        <li>1 onion, sliced</li>
+                        <li>4 cloves garlic, minced</li>
+                        <li>1/4 cup olive oil</li>
+                        <li>2 tbsp fresh basil</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+
+                    <h3>Instructions:</h3>
+                    <p>Preheat oven to 400°F. Toss vegetables with olive oil, garlic, salt, and pepper. Roast for 30-40 minutes until tender. Garnish with fresh basil before serving.</p>
+
+                    <h2>Recipe 4: Hummus with Whole Grain Pita</h2>
+                    
+                    <p>This protein-rich dip is perfect for snacking or as part of a larger meal. Made with chickpeas and tahini, it's both nutritious and delicious.</p>
+
+                    <h2>Recipe 5: Quinoa Tabbouleh</h2>
+                    
+                    <p>A modern twist on the traditional Middle Eastern salad, using quinoa instead of bulgur for added protein and nutrients.</p>
+
+                    <img src="images/沙拉2.png" alt="Quinoa Tabbouleh">
+
+                    <h2>Recipe 6: Baked Falafel</h2>
+                    
+                    <p>These baked falafel are lighter than the traditional fried version while maintaining all the flavor and nutrition of chickpeas and herbs.</p>
+
+                    <h2>Recipe 7: Mediterranean Stuffed Peppers</h2>
+                    
+                    <p>Colorful bell peppers stuffed with a mixture of rice, vegetables, and herbs, then baked to perfection.</p>
+
+                    <h2>Recipe 8: Olive Oil Cake</h2>
+                    
+                    <p>This moist, flavorful cake uses olive oil instead of butter, creating a unique texture and taste that's perfect for dessert or breakfast.</p>
+
+                    <h2>Recipe 9: Grilled Halloumi with Herbs</h2>
+                    
+                    <p>This Cypriot cheese is perfect for grilling and pairs beautifully with fresh herbs and a drizzle of olive oil.</p>
+
+                    <h2>Recipe 10: Mediterranean Breakfast Bowl</h2>
+                    
+                    <p>Start your day with this nutritious bowl featuring Greek yogurt, fresh fruits, nuts, and a drizzle of honey.</p>
+
+                    <h2>Mediterranean Diet Benefits</h2>
+                    
+                    <p>Beyond the delicious recipes, the Mediterranean diet offers numerous health benefits:</p>
+
+                    <ul>
+                        <li><strong>Heart Health:</strong> Reduces risk of cardiovascular disease</li>
+                        <li><strong>Brain Function:</strong> May protect against cognitive decline</li>
+                        <li><strong>Weight Management:</strong> Promotes healthy weight maintenance</li>
+                        <li><strong>Anti-Inflammatory:</strong> Reduces chronic inflammation</li>
+                        <li><strong>Longevity:</strong> Associated with longer, healthier life</li>
+                    </ul>
+
+                    <h2>Making It a Lifestyle</h2>
+                    
+                    <p>The Mediterranean diet is more than just a collection of recipes—it's a way of life that emphasizes fresh, seasonal ingredients, shared meals, and mindful eating. Start with these recipes and gradually incorporate more Mediterranean principles into your daily routine for lasting health benefits.</p>
+                `
+            }
+        };
+
+        // Get article ID from URL
+        function getArticleId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || '1';
+        }
+
+        // Load article content
+        function loadArticle() {
+            const articleId = getArticleId();
+            const article = articles[articleId];
+            
+            // Show content after a brief delay
+            setTimeout(() => {
+                if (article) {
+                    // Update page title
+                    document.title = `${article.title} - NexaLife`;
+                    
+                    // Get elements
+                    const metaEl = document.getElementById('articleMeta');
+                    const titleEl = document.getElementById('articleTitle');
+                    const excerptEl = document.getElementById('articleExcerpt');
+                    const authorEl = document.getElementById('articleAuthor');
+                    const bodyEl = document.getElementById('articleBody');
+                    
+                    // Update content
+                    document.getElementById('articleCategory').textContent = article.category;
+                    document.getElementById('articleDate').textContent = article.date;
+                    titleEl.textContent = article.title;
+                    excerptEl.textContent = article.excerpt;
+                    authorEl.innerHTML = `<span>By <strong>${article.author}</strong></span><span>${article.readTime}</span>`;
+                    bodyEl.innerHTML = article.content;
+                    
+                    // Show content with fade-in effect
+                    [metaEl, titleEl, excerptEl, authorEl, bodyEl].forEach(el => {
+                        el.classList.remove('js-loading');
+                        el.classList.add('js-loaded');
+                    });
+                } else {
+                    // Article not found
+                    const titleEl = document.getElementById('articleTitle');
+                    const bodyEl = document.getElementById('articleBody');
+                    
+                    titleEl.textContent = 'Article Not Found';
+                    bodyEl.innerHTML = '<p>Sorry, the article you are looking for could not be found.</p>';
+                    
+                    // Show error content
+                    titleEl.classList.remove('js-loading');
+                    titleEl.classList.add('js-loaded');
+                    bodyEl.classList.remove('js-loading');
+                    bodyEl.classList.add('js-loaded');
+                }
+            }, 200);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArticle();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

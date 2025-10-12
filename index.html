@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaLife - Lifestyle Magazine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>NexaLife</h1>
+                    <span class="tagline">Lifestyle Magazine</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                            <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                            <li><a href="category.html?cat=home">Home & Garden</a></li>
+                            <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                            <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                            <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">Discover Your Perfect Lifestyle</h2>
+                <p class="hero-subtitle">Curated content for modern living across fashion, health, home, travel, finance, and culinary experiences.</p>
+                <a href="#featured" class="cta-button">Explore Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Lifestyle Hero Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section id="featured" class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Featured Articles</h2>
+            <div class="featured-grid">
+                <article class="featured-article main-featured">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Sustainable Fashion">
+                        <div class="article-category">Fashion & Accessories</div>
+                    </div>
+                    <div class="article-content">
+                        <h3><a href="article.html?id=1">The Future of Sustainable Fashion: Eco-Friendly Brands Leading the Way</a></h3>
+                        <p class="article-excerpt">Discover how innovative fashion brands are revolutionizing the industry with sustainable practices, from organic materials to zero-waste production methods.</p>
+                        <div class="article-meta">
+                            <span class="author">By Sarah Johnson</span>
+                            <span class="date">March 15, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="featured-article">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Healthy Living">
+                        <div class="article-category">Health & Beauty</div>
+                    </div>
+                    <div class="article-content">
+                        <h3><a href="article.html?id=2">10 Morning Routines That Transform Your Day</a></h3>
+                        <p class="article-excerpt">Start your day right with these scientifically-backed morning rituals that boost energy, focus, and overall well-being.</p>
+                        <div class="article-meta">
+                            <span class="author">By Dr. Michael Chen</span>
+                            <span class="date">February 28, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="featured-article">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Home Design">
+                        <div class="article-category">Home & Garden</div>
+                    </div>
+                    <div class="article-content">
+                        <h3><a href="article.html?id=3">Minimalist Home Design: Creating Serenity in Small Spaces</a></h3>
+                        <p class="article-excerpt">Learn how to maximize your living space with minimalist design principles that create calm, organized, and beautiful homes.</p>
+                        <div class="article-meta">
+                            <span class="author">By Emma Rodriguez</span>
+                            <span class="date">April 2, 2025</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Explore Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion">
+                    </div>
+                    <h3>Fashion & Accessories</h3>
+                    <p>Latest trends, style guides, and fashion insights</p>
+                    <a href="category.html?cat=fashion" class="category-link">Explore</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Health">
+                    </div>
+                    <h3>Health & Beauty</h3>
+                    <p>Wellness tips, beauty routines, and health advice</p>
+                    <a href="category.html?cat=health" class="category-link">Explore</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Home">
+                    </div>
+                    <h3>Home & Garden</h3>
+                    <p>Interior design, gardening, and home improvement</p>
+                    <a href="category.html?cat=home" class="category-link">Explore</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" alt="Travel">
+                    </div>
+                    <h3>Travel & Accommodation</h3>
+                    <p>Destination guides, travel tips, and accommodation reviews</p>
+                    <a href="category.html?cat=travel" class="category-link">Explore</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80" alt="Finance">
+                    </div>
+                    <h3>Finance & Insurance</h3>
+                    <p>Financial planning, investment tips, and insurance guides</p>
+                    <a href="category.html?cat=finance" class="category-link">Explore</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2086&q=80" alt="Food">
+                    </div>
+                    <h3>Food & Beverage</h3>
+                    <p>Recipes, restaurant reviews, and culinary experiences</p>
+                    <a href="category.html?cat=food" class="category-link">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="latest-section">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="images/东南亚.png" alt="Travel Guide">
+                        <div class="article-category">Travel & Accommodation</div>
+                    </div>
+                    <div class="article-content">
+                        <h3><a href="article.html?id=4">Hidden Gems of Southeast Asia: 5 Underrated Destinations</a></h3>
+                        <p class="article-excerpt">Discover breathtaking destinations off the beaten path in Southeast Asia that offer authentic experiences without the crowds.</p>
+                        <div class="article-meta">
+                            <span class="author">By James Wilson</span>
+                            <span class="date">May 10, 2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="images/地中海.png" alt="Food Recipe">
+                        <div class="article-category">Food & Beverage</div>
+                    </div>
+                    <div class="article-content">
+                        <h3><a href="article.html?id=5">Mediterranean Diet: 10 Delicious Recipes for Healthy Living</a></h3>
+                        <p class="article-excerpt">Explore the health benefits of the Mediterranean diet with these easy-to-make, nutritious recipes that taste amazing.</p>
+                        <div class="article-meta">
+                            <span class="author">By Chef Maria Santos</span>
+                            <span class="date">June 18, 2025</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest lifestyle tips and exclusive content.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <h3>NexaLife</h3>
+                        <span class="tagline">Lifestyle Magazine</span>
+                    </div>
+                    <p>Your ultimate destination for lifestyle inspiration, covering fashion, health, home, travel, finance, and culinary experiences.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pinterest.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://youtube.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                        <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                        <li><a href="category.html?cat=home">Home & Garden</a></li>
+                        <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                        <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                        <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                        <li><a href="contact.html#terms">Terms of Service</a></li>
+                        <li><a href="contact.html#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> contact@nexalife.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (212) 555-0123</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 456 Madison Avenue, New York, NY 10022</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexaLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
