@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticombo: Your Safe and Secure Ticket Marketplace - NexaLife</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .article-header {
+            margin-top: 80px;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .article-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .article-excerpt {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        
+        .article-body h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+        
+        .article-body h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .article-body a.ticombo-link {
+            color: #e74c3c;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .article-body a.ticombo-link:hover {
+            color: #c0392b;
+            border-bottom-color: #c0392b;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--white);
+            color: var(--text-dark);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .share-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .product-showcase {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .product-showcase h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-item {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 !important;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html">NexaLife</a></h1>
+                    <span class="tagline">Lifestyle Magazine</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                            <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                            <li><a href="category.html?cat=home">Home & Garden</a></li>
+                            <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                            <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                            <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta">
+                <div class="article-category">Finance & Insurance</div>
+                <div class="article-date">October 15, 2025</div>
+            </div>
+            <h1 class="article-title">Ticombo: Your Safe and Secure Ticket Marketplace</h1>
+            <p class="article-excerpt">Discover how Ticombo is revolutionizing the ticket marketplace with unprecedented security, fair pricing, and a commitment to protecting both buyers and sellers in the digital age.</p>
+            <div class="article-author">
+                <span>By <strong>David Martinez</strong></span>
+                <span>8 min read</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="article-body">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Concert Tickets and Events">
+            
+            <p>In today's digital landscape, purchasing tickets for concerts, sports events, and shows should be exciting—not stressful. Yet, too many fans have fallen victim to ticket fraud, unfair pricing, and unreliable sellers. Enter <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a>, the revolutionary ticket marketplace that's changing the game by putting safety, transparency, and fairness at the forefront of every transaction.</p>
+
+            <h2>The Birth of a Trusted Platform</h2>
+            
+            <p>Founded in 2017 in Berlin, Germany, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> was born from a simple yet powerful vision: to create the first platform where event organizers, resellers, and fans could buy and sell tickets in a fair, simple, and secure manner. Unlike traditional ticket marketplaces that often prioritize profit over user protection, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> has built its entire business model around ensuring customer satisfaction and security.</p>
+
+            <blockquote>
+                "Our mission at Ticombo is to revolutionize how fans experience live events by eliminating the risks and frustrations of ticket purchasing."
+            </blockquote>
+
+            <h2>Why Choose Ticombo? The Unbeatable Advantages</h2>
+
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Live Music Event">
+
+            <h3>1. Fair and Transparent Pricing</h3>
+            
+            <p>One of the most significant pain points in the ticket resale market is price gouging. <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> addresses this head-on by implementing strict price markup limitations. This means you'll never pay exorbitant fees—in fact, many tickets on <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> are available below face value. This commitment to fair pricing ensures that attending your favorite events remains accessible and affordable.</p>
+
+            <h3>2. Comprehensive Security Measures</h3>
+            
+            <p>Security is not just a feature at <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a>—it's the foundation. Every seller on the platform undergoes rigorous verification processes to ensure legitimacy. The platform's TixProtect program provides buyers with 100% money-back guarantees if tickets don't arrive on time or don't match the order description. This level of protection is unprecedented in the industry and demonstrates <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a>'s unwavering commitment to customer protection.</p>
+
+            <h3>3. User-Friendly Experience</h3>
+            
+            <p>Navigating the ticket marketplace shouldn't require a degree in computer science. <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> has designed its platform with simplicity in mind. The intuitive interface allows users to search for events, compare prices, and complete purchases in just a few clicks. Whether you're buying or selling tickets, the process is streamlined and hassle-free.</p>
+
+            <div class="product-showcase">
+                <h3>How Ticombo Works: A Seamless Journey</h3>
+                
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Search for Events">
+                        <div class="product-info">
+                            <h4>Search & Discover</h4>
+                            <p>Browse thousands of events using the powerful search engine or explore curated event pages to find your perfect experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Secure Payment">
+                        <div class="product-info">
+                            <h4>Secure Purchase</h4>
+                            <p>Complete your order with confidence using secure payment methods and instant confirmation of your ticket purchase.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Enjoy Events">
+                        <div class="product-info">
+                            <h4>Enjoy Your Event</h4>
+                            <p>Receive your tickets promptly and enjoy your event with peace of mind, knowing you're protected by TixProtect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Buying Tickets on Ticombo: A Step-by-Step Guide</h2>
+            
+            <p>The purchasing process on <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> has been optimized for maximum efficiency:</p>
+
+            <ul>
+                <li><strong>Step 1: Find Your Event</strong> - Use the search bar or browse event categories to locate the concert, sports game, or show you want to attend.</li>
+                <li><strong>Step 2: Select Your Tickets</strong> - Compare available tickets by price, section, and seller ratings to find the best option for your needs.</li>
+                <li><strong>Step 3: Quick Login</strong> - Sign in using your social media accounts for instant access without lengthy registration forms.</li>
+                <li><strong>Step 4: Confirm Details</strong> - Verify your contact information to ensure smooth ticket delivery.</li>
+                <li><strong>Step 5: Secure Payment</strong> - Choose from multiple payment options, all protected by industry-leading security encryption.</li>
+                <li><strong>Step 6: Receive Confirmation</strong> - Get instant confirmation and tracking information for your ticket delivery.</li>
+            </ul>
+
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Sports Stadium Event">
+
+            <h2>Selling Tickets: Turn Plans into Profit</h2>
+            
+            <p>Life happens, and sometimes you can't attend an event you've been planning for. Rather than letting your tickets go to waste, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> makes it incredibly easy to resell them securely:</p>
+
+            <ol>
+                <li><strong>Register as a Seller</strong> - Create a verified seller account through a simple registration process.</li>
+                <li><strong>List Your Tickets</strong> - Upload ticket details, set your price within fair market guidelines, and add photos if applicable.</li>
+                <li><strong>Get Approved</strong> - <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> reviews your listing to ensure it meets platform standards.</li>
+                <li><strong>Market Your Tickets</strong> - Utilize built-in promotion tools to reach potential buyers.</li>
+                <li><strong>Receive Payment</strong> - Once your tickets sell, receive payment quickly and securely.</li>
+            </ol>
+
+            <h2>Corporate Services: Elevating Business Events</h2>
+            
+            <p>Beyond individual ticket sales, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> offers specialized corporate services for businesses and organizations. Whether you're planning a team-building event, client entertainment, or corporate hospitality, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a>'s corporate team provides customized solutions to meet your specific needs. From bulk ticket purchases to VIP packages, the platform ensures your corporate events are executed flawlessly.</p>
+
+            <h2>The Technology Behind the Trust</h2>
+            
+            <p>What sets <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> apart is its investment in cutting-edge technology. The platform employs advanced fraud detection systems, blockchain verification for ticket authenticity, and AI-powered customer support to ensure every transaction is smooth and secure. This technological infrastructure works behind the scenes to protect users while maintaining the simple, intuitive experience that makes <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> so accessible.</p>
+
+            <h2>Customer Support That Cares</h2>
+            
+            <p>Even with the best technology, sometimes you need a human touch. <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a>'s customer support team is renowned for its responsiveness and helpfulness. The platform features an integrated chat system that allows buyers and sellers to communicate directly, and users can also reach out to the support team at any time for assistance. This commitment to customer service ensures that any issues are resolved quickly and satisfactorily.</p>
+
+            <h2>Join the Ticombo Revolution</h2>
+            
+            <p>In a world where ticket fraud and unfair pricing have become all too common, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> stands as a beacon of trust and fairness. Whether you're a passionate fan eager to see your favorite artist, a sports enthusiast who never misses a game, or someone who occasionally needs to resell tickets, <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> provides the secure, transparent platform you deserve.</p>
+
+            <p>The future of ticket purchasing is here, and it's built on the principles of fairness, security, and customer satisfaction. Join thousands of satisfied users who have discovered the <a href="https://www.linkhaitao.com/index.php?mod=lhdeal&track=5e3dGP7W0FeN_aLXU9LqsQhufx92EsssjSxHI7jLFbU4kdoER40NXRoq8_b0ZeVrU5NMZLoNPfslo_c&new=https%3A%2F%2Fwww.ticombo.com" class="ticombo-link" target="_blank" rel="noopener">Ticombo</a> difference and experience worry-free ticket transactions today.</p>
+
+            <blockquote>
+                "With Ticombo, attending your dream events is no longer a gamble—it's a guarantee of safety, fairness, and peace of mind."
+            </blockquote>
+
+            <!-- Share Buttons -->
+            <div class="share-buttons">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener" class="share-btn">
+                    <i class="fab fa-facebook"></i> Share on Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=" target="_blank" rel="noopener" class="share-btn">
+                    <i class="fab fa-twitter"></i> Share on Twitter
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=" target="_blank" rel="noopener" class="share-btn">
+                    <i class="fab fa-pinterest"></i> Pin it
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=" target="_blank" rel="noopener" class="share-btn">
+                    <i class="fab fa-linkedin"></i> Share on LinkedIn
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <h3>NexaLife</h3>
+                        <span class="tagline">Lifestyle Magazine</span>
+                    </div>
+                    <p>Your ultimate destination for lifestyle inspiration, covering fashion, health, home, travel, finance, and culinary experiences.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pinterest.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://youtube.com/nexalife" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="category.html?cat=fashion">Fashion & Accessories</a></li>
+                        <li><a href="category.html?cat=health">Health & Beauty</a></li>
+                        <li><a href="category.html?cat=home">Home & Garden</a></li>
+                        <li><a href="category.html?cat=travel">Travel & Accommodation</a></li>
+                        <li><a href="category.html?cat=finance">Finance & Insurance</a></li>
+                        <li><a href="category.html?cat=food">Food & Beverage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                        <li><a href="contact.html#terms">Terms of Service</a></li>
+                        <li><a href="contact.html#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> contact@nexalife.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (212) 555-0123</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 456 Madison Avenue, New York, NY 10022</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexaLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
